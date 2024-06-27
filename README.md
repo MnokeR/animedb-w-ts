@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# Anime App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a re-creation of an Anime App using TypeScript, React, and several other libraries. It leverages the AniList API to fetch and display anime information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Homepage**: Displays trending, seasonal, upcoming, and top-rated anime.
+- **Search**: Allows users to search for anime by title, season, year, and format (TV or Movie).
+- **Top Anime**: Lists top-rated anime based on user preferences.
+- **Anime Details**: Provides detailed information about each anime, including synopsis, release date, genres, and more.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Front-end library for building user interfaces.
+- **TypeScript**: Typed JavaScript to improve code quality and maintainability.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **React Router**: Declarative routing for navigation within the application.
+- **Tanstack Query**: Data-fetching library to manage API requests.
+- **AniList API**: External API to fetch anime-related data.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+To get a local copy up and running, follow these steps:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/your-username/anime-app.git
+   cd anime-app
+   
+2. **Install dependencies:
+
+   ```bash
+   npm install
+
+3. **Start the development server:
+
+   ```bash
+   npm run dev
