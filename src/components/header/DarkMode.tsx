@@ -21,7 +21,11 @@ function DarkMode() {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
 
-  return <div onClick={toggleTheme}>Mode</div>;
+  return (
+    <div className="flex-none" onClick={toggleTheme}>
+      Mode
+    </div>
+  );
 }
 
 export default DarkMode;
