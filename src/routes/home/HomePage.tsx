@@ -8,10 +8,10 @@ export interface Categories {
 
 function HomePage() {
   const categories: Categories[] = [
-    { name: "trending", title: ["Trending", "Now"] },
-    { name: "season", title: ["Season", "Top"] },
-    { name: "nextSeason", title: ["Next", "Season"] },
-    { name: "top", title: ["Top", "Rated"] },
+    { name: "trending", title: ["TRENDING", "NOW"] },
+    { name: "season", title: ["SEASONS", "TOP"] },
+    { name: "nextSeason", title: ["NEXT", "SEASON"] },
+    { name: "top", title: ["TOP", "RATED"] },
   ];
   return (
     <ContentWrapper>
