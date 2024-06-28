@@ -26,14 +26,19 @@ To get a local copy up and running, follow these steps:
 
    ```bash
    git clone https://github.com/MnokeR/animedb-w-ts
-   cd anime-app
-   
-2. **Install dependencies:
+   cd animedb-w-ts
+
+   ```
+
+2. \*\*Install dependencies:
 
    ```bash
    npm install
 
-3. **Start the development server:
+   ```
+
+3. \*\*Start the development server:
 
    ```bash
    npm run dev
+   ```
