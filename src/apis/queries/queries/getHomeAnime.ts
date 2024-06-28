@@ -1,8 +1,25 @@
 import axios from "axios";
 import { seasonOfYear } from "../../../utils/seasonOfYear";
-import { AnimeDetails } from "../types/animeDetails";
 
-export const getHomeAnime = async (): Promise<AnimeDetails> => {
+interface Anime {
+  id: number;
+  title: { userPreferred: string };
+  coverImage: { large: string; extraLarge: string };
+}
+
+interface AnimeCategory {
+  media: Anime[];
+}
+
+interface AnimeData {
+  nextSeason: AnimeCategory;
+  popular: AnimeCategory;
+  season: AnimeCategory;
+  top: AnimeCategory;
+  trending: AnimeCategory;
+}
+
+export const getHomeAnime = async (): Promise<AnimeData> => {
   const { currentSeason, nextSeason, currentYear, nextYear } = seasonOfYear();
 
   const base_URL = "https://graphql.anilist.co";
@@ -111,8 +128,8 @@ export const getHomeAnime = async (): Promise<AnimeDetails> => {
 
   try {
     const resp = await axios(options);
-    console.log(resp.data);
-    return resp.data as AnimeDetails;
+    console.log(resp.data.data);
+    return resp.data.data as AnimeData;
   } catch (error) {
     throw error;
   }
