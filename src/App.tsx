@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Root from "./routes/Root";
 import ErrorBoundary from "./routes/ErrorBoundary";
 import HomePage from "./routes/home/HomePage";
+import AnimePage from "./routes/anime/AnimePage";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -17,6 +18,21 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <HomePage />,
+          },
+          {
+            path: "anime/:animeId",
+            element: "",
+            children: [
+              {
+                errorElement: <ErrorBoundary />,
+                children: [
+                  {
+                    index: true,
+                    element: <AnimePage />,
+                  },
+                ],
+              },
+            ],
           },
         ],
       },

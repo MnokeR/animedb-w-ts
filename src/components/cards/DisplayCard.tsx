@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 interface DisplayCardProps {
   id: number;
   title: string;
@@ -7,13 +9,13 @@ interface DisplayCardProps {
 function DisplayCard({ id, title, image }: DisplayCardProps) {
   return (
     <div className="relative flex flex-col">
-      <div className="bg-slate-200 dark:bg-slate-800 ">
+      <NavLink to={`/anime/${id}`} className="bg-slate-200 dark:bg-slate-800 ">
         <img
           className="max-h-60 object-contain hover:scale-110 transition duration-200"
           src={image}
           alt={title}
         />
-      </div>
+      </NavLink>
       <div className="">
         <p className="line-clamp-2 overflow-hidden">{title}</p>
       </div>
