@@ -9,13 +9,18 @@ interface DisplayCardProps {
 function DisplayCard({ id, title, image }: DisplayCardProps) {
   return (
     <div className="relative flex flex-col">
-      <NavLink to={`/anime/${id}`} className="bg-slate-200 dark:bg-slate-800 ">
-        <img
-          className="max-h-60 object-contain hover:scale-110 transition duration-200"
-          src={image}
-          alt={title}
-        />
-      </NavLink>
+      <div className="p-2 bg-slate-200 dark:bg-slate-800 rounded">
+        <NavLink
+          to={`/anime/${id}`}
+          className="bg-slate-200 dark:bg-slate-800 "
+        >
+          <img
+            className="h-60 hover:scale-105 transition duration-200 rounded"
+            src={image}
+            alt={title}
+          />
+        </NavLink>
+      </div>
       <div className="">
         <p className="line-clamp-2 overflow-hidden">{title}</p>
       </div>

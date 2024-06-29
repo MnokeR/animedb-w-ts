@@ -1,4 +1,5 @@
 import { AnimeDetails } from "../../../apis/queries/types/animeDetails";
+import Genre from "../../../components/Genre";
 import ContentCard from "../../../components/cards/ContentCard";
 import HTMLReactParser from "html-react-parser/lib/index";
 
@@ -12,6 +13,7 @@ function MainBody({ data }: Props) {
       <ContentCard>
         <h1 className="text-lg font-semibold ">{data.Media.title.romaji}</h1>
         <p className="text-sm">{HTMLReactParser(data.Media.description)}</p>
+        <Genre genres={data.Media.genres} />
       </ContentCard>
     </div>
   );

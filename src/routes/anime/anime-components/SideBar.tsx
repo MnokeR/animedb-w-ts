@@ -8,7 +8,7 @@ interface Props {
 
 function SideBar({ data }: Props) {
   return (
-    <ContentCard className="w-[230px] h-full text-sm">
+    <ContentCard className="w-full xs:w-[230px] xs:h-full text-sm">
       <div className="flex flex-col">
         <img
           className="rounded-lg shadow shadow-gray-500 dark:shadow-gray-700"
@@ -16,16 +16,20 @@ function SideBar({ data }: Props) {
           alt={data.Media.title.romaji}
         />
         <H3>English</H3>
-        <p>{data.Media.title?.english || ""}</p>
+        <p className="">{data.Media.title?.english || "-"}</p>
         <H3>Native</H3>
-        <p>{data.Media.title?.native || ""}</p>
+        <p>{data.Media.title?.native || "-"}</p>
         <H3>Type/Format</H3>
-        <p>{data.Media.type || ""}</p>
-        <p>{data.Media.format || ""}</p>
+        <p>{data.Media.type || "-"}</p>
+        <p>{data.Media.format || "-"}</p>
         <H3>Status</H3>
-        <p>{data.Media.status}</p>
+        <p>
+          {data.Media.status === "NOT_YET_RELEASED" && "Not Released"}
+          {data.Media.status === "RELEASING" && "Ongoing"}
+          {data.Media.status === "FINISHED" && "Complete"}
+        </p>
         <H3>Episodes</H3>
-        <p>{data.Media.episodes || ""}</p>
+        <p>{data.Media.episodes || "-"}</p>
         <H3>Studio</H3>
         <p>
           {data.Media.studios.edges.map((main) => {
