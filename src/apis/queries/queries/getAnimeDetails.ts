@@ -3,7 +3,7 @@ import { AnimeDetails } from "../types/animeDetails";
 
 export const getAnimeDetails = async (id) => {
   const base_URL = "https://graphql.anilist.co";
-  const query = `query media($id: Int, $charPage: Int $type: MediaType, $isAdult: Boolean) {
+  const query = `query media($id: Int, $type: MediaType, $isAdult: Boolean) {
       Media(id: $id, type: $type, isAdult: $isAdult) {
         id
         title {
@@ -45,11 +45,6 @@ export const getAnimeDetails = async (id) => {
         meanScore
         averageScore
         popularity
-        favourites
-        isFavourite
-        isFavouriteBlocked
-        isRecommendationBlocked
-        isReviewBlocked
         hashtag
         countryOfOrigin
         isLicensed
@@ -161,6 +156,8 @@ export const getAnimeDetails = async (id) => {
 
   const variables = {
     id: id,
+    type: "ANIME",
+    isAdult: false,
   };
   const options = {
     method: "post",
@@ -177,8 +174,8 @@ export const getAnimeDetails = async (id) => {
 
   try {
     const resp = await axios(options);
-    console.log(resp.data);
-    return resp.data as AnimeDetails;
+    console.log(resp.data.data);
+    return resp.data.data as AnimeDetails;
   } catch (error) {
     console.log(error);
     throw error;

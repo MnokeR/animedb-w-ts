@@ -5,7 +5,7 @@ interface Props extends WrapperProps {
 
 function ContentWrapper({ children, className }: Props) {
   return (
-    <div className={`w-[1200px] mx-auto my-4 ${className}`}>{children}</div>
+    <div className={`max-w-[1200px] mx-auto my-4 ${className}`}>{children}</div>
   );
 }
 

@@ -1,30 +1,30 @@
 export interface AnimeDetails {
-  media: {
+  Media: {
     id: number;
     title: {
-      userPreferred: string | null;
-      romaji: string | null;
-      english: string | null;
-      native: string | null;
+      userPreferred: string;
+      romaji: string;
+      english: string;
+      native: string;
     };
     coverImage: {
-      extraLarge: string | null;
-      large: string | null;
+      extraLarge: string;
+      large: string;
     };
     bannerImage: string;
     startDate: {
-      year: number | null;
-      month: number | null;
-      day: number | null;
+      year: number;
+      month: number;
+      day: number;
     };
-    description: string | null;
-    season: string | null;
-    seasonYear: number | null;
-    type: string | null;
-    format: string | null;
-    status: string | null;
-    episodes: number | null;
-    duration: number | null;
+    description: string;
+    season: string;
+    seasonYear: number;
+    type: string;
+    format: string;
+    status: string;
+    episodes: number;
+    duration: number;
     genres: string[];
     synonyms: string[];
     source: string[];
@@ -90,12 +90,10 @@ interface Studios {
 }
 
 interface StudiosEdge {
-  edges: {
-    isMain: boolean | null;
-    node: {
-      id: number | null;
-      name: string | null;
-    };
+  isMain: boolean | null;
+  node: {
+    id: number | null;
+    name: string | null;
   };
 }
 
