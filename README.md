@@ -1,6 +1,6 @@
 # Anime App
 
-This project is a re-creation of an Anime App using TypeScript, React, and several other libraries. It leverages the AniList API to fetch and display anime information.
+This project is an Anime App developed using TypeScript, React, and various other libraries. It utilizes the AniList API to retrieve and present anime information.
 
 ## Features
 

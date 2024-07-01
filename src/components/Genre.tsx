@@ -13,7 +13,7 @@ function Genre({ className, genres }: Props) {
       </span>
     );
   });
-  return <div className="flex gap-1">{renderGenres}</div>;
+  return <div className="flex flex-wrap gap-1">{renderGenres}</div>;
 }
 
 export default Genre;

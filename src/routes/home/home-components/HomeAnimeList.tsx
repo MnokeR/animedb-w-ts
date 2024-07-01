@@ -3,6 +3,7 @@ import { getHomeAnime } from "../../../apis/queries/queries/getHomeAnime";
 import { Categories } from "../HomePage";
 import DisplayStyle from "../../../components/cards/DisplayStyle";
 import Heading from "../../../components/Heading";
+import { Fragment } from "react/jsx-runtime";
 
 function HomeAnimeList({ categories }: { categories: Categories[] }) {
   const { data, status, error } = useQuery({
@@ -18,6 +19,7 @@ function HomeAnimeList({ categories }: { categories: Categories[] }) {
     const animes = data?.[category.name]?.media.map((anime) => {
       return (
         <DisplayStyle
+          key={anime.id}
           style="rows"
           id={anime.id}
           title={anime.title.userPreferred}
@@ -26,10 +28,10 @@ function HomeAnimeList({ categories }: { categories: Categories[] }) {
       );
     });
     return (
-      <>
+      <Fragment key={category.name}>
         <Heading heading={category.title} />
         {animes}
-      </>
+      </Fragment>
     );
   });
 

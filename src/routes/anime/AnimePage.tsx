@@ -17,7 +17,7 @@ function AnimePage() {
   if (status === "error") return `Error: ${error.message}`;
 
   return (
-    <ContentWrapper className="flex flex-row flex-wrap gap-2">
+    <ContentWrapper className="flex flex-row flex-wrap xs:flex-nowrap gap-2">
       <SideBar data={data} />
       <MainBody data={data} />
     </ContentWrapper>
