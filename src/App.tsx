@@ -20,7 +20,7 @@ const router = createBrowserRouter([
             element: <HomePage />,
           },
           {
-            path: "anime/:animeId",
+            path: ":type/:animeId",
             element: "",
             children: [
               {

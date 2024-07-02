@@ -6,12 +6,13 @@ import SideBar from "./anime-components/SideBar";
 import MainBody from "./anime-components/MainBody";
 
 function AnimePage() {
-  const { animeId } = useParams();
+  const { type, animeId } = useParams();
+
   const id = Number(animeId);
 
   const { data, status, error } = useQuery({
-    queryKey: ["animeDetails", animeId],
-    queryFn: () => getAnimeDetails(id),
+    queryKey: ["animeDetails", animeId, type],
+    queryFn: () => getAnimeDetails(id, type),
     staleTime: 60 * 1000 * 60,
   });
 

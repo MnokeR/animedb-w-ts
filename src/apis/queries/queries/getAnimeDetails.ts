@@ -1,7 +1,10 @@
 import axios from "axios";
 import { AnimeDetails } from "../types/animeDetails";
 
-export const getAnimeDetails = async (id: number): Promise<AnimeDetails> => {
+export const getAnimeDetails = async (
+  id: number,
+  type: string
+): Promise<AnimeDetails> => {
   const base_URL = "https://graphql.anilist.co";
   const query = `query media($id: Int, $type: MediaType, $isAdult: Boolean) {
       Media(id: $id, type: $type, isAdult: $isAdult) {
@@ -182,7 +185,7 @@ export const getAnimeDetails = async (id: number): Promise<AnimeDetails> => {
 
   const variables = {
     id: id,
-    type: "ANIME",
+    type: type.toUpperCase(),
     isAdult: false,
   };
   const options = {
