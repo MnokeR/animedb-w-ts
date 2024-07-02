@@ -1,3 +1,5 @@
+import { AnimeCharacters } from "./animeCharacters";
+
 export interface AnimeDetails {
   Media: {
     id: number;
@@ -60,6 +62,7 @@ export interface AnimeDetails {
       description: string | null;
       rank: number | null;
     };
+    characterPreview: AnimeCharacters;
   };
 }
 

@@ -128,7 +128,6 @@ export const getHomeAnime = async (): Promise<AnimeData> => {
 
   try {
     const resp = await axios(options);
-    console.log(resp.data.data);
     return resp.data.data as AnimeData;
   } catch (error) {
     throw error;

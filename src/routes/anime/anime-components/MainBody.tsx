@@ -2,6 +2,7 @@ import { AnimeDetails } from "../../../apis/queries/types/animeDetails";
 import Genre from "../../../components/Genre";
 import ContentCard from "../../../components/cards/ContentCard";
 import HTMLReactParser from "html-react-parser/lib/index";
+import Characters from "./Characters";
 interface Props {
   data: AnimeDetails;
 }
@@ -16,6 +17,9 @@ function MainBody({ data }: Props) {
         </p>
         <br></br>
         <Genre genres={data.Media.genres} />
+      </ContentCard>
+      <ContentCard>
+        <Characters data={data} />
       </ContentCard>
     </div>
   );

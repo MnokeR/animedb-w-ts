@@ -7,9 +7,11 @@ import MainBody from "./anime-components/MainBody";
 
 function AnimePage() {
   const { animeId } = useParams();
+  const id = Number(animeId);
+
   const { data, status, error } = useQuery({
     queryKey: ["animeDetails", animeId],
-    queryFn: () => getAnimeDetails(animeId),
+    queryFn: () => getAnimeDetails(id),
     staleTime: 60 * 1000 * 60,
   });
 

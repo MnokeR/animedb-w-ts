@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AnimeDetails } from "../types/animeDetails";
 
-export const getAnimeDetails = async (id) => {
+export const getAnimeDetails = async (id: number): Promise<AnimeDetails> => {
   const base_URL = "https://graphql.anilist.co";
   const query = `query media($id: Int, $type: MediaType, $isAdult: Boolean) {
       Media(id: $id, type: $type, isAdult: $isAdult) {
@@ -62,6 +62,32 @@ export const getAnimeDetails = async (id) => {
               status(version: 2)
               bannerImage
               coverImage {
+                large
+              }
+            }
+          }
+        }
+        characterPreview: characters(page: 1, perPage: 8, sort: [ROLE, RELEVANCE, ID]) {
+          edges {
+            id
+            role
+            name
+            voiceActors(language: JAPANESE, sort: [RELEVANCE, ID]) {
+              id
+              name {
+                userPreferred
+              }
+              language: languageV2
+              image {
+                large
+              }
+            }
+            node {
+              id
+              name {
+                userPreferred
+              }
+              image {
                 large
               }
             }
