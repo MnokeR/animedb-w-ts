@@ -8,13 +8,15 @@ function Characters({ data }: CharactersProps) {
   const renderPreviewCharacters = data.Media.characterPreview.edges.map(
     (character) => {
       return (
-        <div key={character.id} className="my-2">
+        <div key={character.id}>
           <CharacterCard
-            charImage={character.node.image.large}
-            charName={character.node.name.userPreferred}
-            charRole={character.role}
-            voiceImage={character.voiceActors[0].image.large}
-            voiceName={character.voiceActors[0].name.userPreferred}
+            charImage={character.node.image?.large}
+            charName={character.node.name?.userPreferred}
+            charRole={character?.role}
+            voiceImage={character.voiceActors[0]?.image.large || undefined}
+            voiceName={
+              character.voiceActors[0]?.name.userPreferred || undefined
+            }
           />
         </div>
       );
@@ -43,7 +45,7 @@ function Characters({ data }: CharactersProps) {
   );
   console.log(data);
   return (
-    <div className="max-h-[400px] overflow-y-auto scrollbar">
+    <div className="lg:flex flex-wrap justify-center max-h-[400px] overflow-y-auto scrollbar gap-2">
       {renderPreviewCharacters}
     </div>
   );

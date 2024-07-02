@@ -71,19 +71,19 @@ interface Relations {
 }
 
 interface RelationsEdge {
-  id: number | null;
-  relationType: string | null;
+  id: number;
+  relationType: string;
   node: {
-    id: number | null;
+    id: number;
     title: {
-      userPreferred: string | null;
+      userPreferred: string;
     };
-    format: string | null;
-    type: string | null;
-    status: string | null;
-    bannerImage: string | null;
+    format: string;
+    type: string;
+    status: string;
+    bannerImage: string;
     coverImage: {
-      large: string | null;
+      large: string;
     };
   };
 }

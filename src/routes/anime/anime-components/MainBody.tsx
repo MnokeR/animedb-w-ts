@@ -3,6 +3,7 @@ import Genre from "../../../components/Genre";
 import ContentCard from "../../../components/cards/ContentCard";
 import HTMLReactParser from "html-react-parser/lib/index";
 import Characters from "./Characters";
+import Related from "./Related";
 interface Props {
   data: AnimeDetails;
 }
@@ -20,6 +21,9 @@ function MainBody({ data }: Props) {
       </ContentCard>
       <ContentCard>
         <Characters data={data} />
+      </ContentCard>
+      <ContentCard>
+        {data.Media.relations.edges.length > 0 && <Related data={data} />}
       </ContentCard>
     </div>
   );
