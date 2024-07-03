@@ -4,6 +4,7 @@ import { getAnimeDetails } from "../../apis/queries/queries/getAnimeDetails";
 import ContentWrapper from "../../components/ContentWrapper";
 import SideBar from "./anime-components/SideBar";
 import MainBody from "./anime-components/MainBody";
+import Loading from "../../components/Loading";
 
 function AnimePage() {
   const { type, animeId } = useParams();
@@ -16,7 +17,7 @@ function AnimePage() {
     staleTime: 60 * 1000 * 60,
   });
 
-  if (status === "pending") return "Loading";
+  if (status === "pending") return <Loading />;
   if (status === "error") return `Error: ${error.message}`;
 
   return (

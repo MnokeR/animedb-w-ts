@@ -4,6 +4,7 @@ import { Categories } from "../HomePage";
 import DisplayStyle from "../../../components/cards/DisplayStyle";
 import Heading from "../../../components/Heading";
 import { Fragment } from "react/jsx-runtime";
+import Loading from "../../../components/Loading";
 
 function HomeAnimeList({ categories }: { categories: Categories[] }) {
   const { data, status, error } = useQuery({
@@ -12,7 +13,7 @@ function HomeAnimeList({ categories }: { categories: Categories[] }) {
     staleTime: 60 * 1000 * 60,
   });
 
-  if (status === "pending") return "Loading..";
+  if (status === "pending") return <Loading />;
   if (status === "error") return `Error: ${error.message}`;
 
   const renderCategories = categories.map((category) => {
