@@ -1,4 +1,3 @@
-import { WrapperProps } from "../../types/wrappers";
 import DisplayCard from "./DisplayCard";
 
 interface DisplayStyleProps {
@@ -15,12 +14,6 @@ function DisplayStyle({ style, id, image, title }: DisplayStyleProps) {
         <DisplayCard id={id} image={image} title={title} />
       </div>
     );
-  // if (style === "full")
-  //   return (
-  //     <div className="">
-  //       <DisplayCard />
-  //     </div>
-  //   );
 }
 
 export default DisplayStyle;

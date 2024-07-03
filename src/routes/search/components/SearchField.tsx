@@ -16,8 +16,9 @@ function SearchField() {
     if (!inputValue) return deleteQueryParam("term");
     setQueryParam("term", inputValue);
   };
+
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center m-4">
       <form onSubmit={handleSubmit}>
         <fieldset className="border border:slate-200 dark:border-slate-800 p-2">
           <legend>Search</legend>

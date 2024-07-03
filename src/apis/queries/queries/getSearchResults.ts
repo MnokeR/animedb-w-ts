@@ -1,14 +1,25 @@
 import axios from "axios";
+import { AnimeSearch } from "../types/animeSearch";
 
-export const getSearchResults = async (
-  pageParam: number,
-  term?: string,
-  type?: string,
-  year?: string,
-  season?: string,
-  format?: string,
-  currentStatus?: string
-) => {
+interface SearchParams {
+  pageParam: number;
+  term?: string;
+  type?: string;
+  year?: string;
+  season?: string;
+  format?: string;
+  currentStatus?: string;
+}
+
+export const getSearchResults = async ({
+  pageParam,
+  term,
+  type,
+  year,
+  season,
+  format,
+  currentStatus,
+}: SearchParams): Promise<AnimeSearch> => {
   const base_URL = "https://graphql.anilist.co";
 
   const query = `
@@ -104,7 +115,7 @@ export const getSearchResults = async (
 
   try {
     const resp = await axios(options);
-    return resp.data.data.Page;
+    return resp.data.data.Page as AnimeSearch;
   } catch (error) {
     console.log(error);
     throw error;

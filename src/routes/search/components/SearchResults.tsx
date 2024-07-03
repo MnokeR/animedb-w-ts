@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getSearchResults } from "../../../apis/queries/queries/getSearchResults";
 import { useQueryParams } from "../../../hooks/useQueryParams";
+import SearchRender from "./SearchRender";
 
 function SearchResults() {
   const { getQueryParam } = useQueryParams();
@@ -13,15 +14,15 @@ function SearchResults() {
   const { data, status, error } = useInfiniteQuery({
     queryKey: ["search", term, type, year, season, format, currentStatus],
     queryFn: ({ pageParam = 1 }) =>
-      getSearchResults(
+      getSearchResults({
         pageParam,
         term,
         type,
         year,
         season,
         format,
-        currentStatus
-      ),
+        currentStatus,
+      }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const pageInfo = lastPage.pageInfo;
@@ -29,9 +30,10 @@ function SearchResults() {
     },
     staleTime: 60 * 1000 * 60,
   });
-  console.log(data);
   if (status === "pending") return "Loading";
   if (status === "error") return `Error: ${error.message}`;
+
+  return <SearchRender data={data} />;
 }
 
 export default SearchResults;
