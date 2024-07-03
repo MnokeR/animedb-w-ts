@@ -1,9 +1,9 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { getSearchResults } from "../../../apis/queries/queries/getSearchResults";
 import { useQueryParams } from "../../../hooks/useQueryParams";
 import SearchRender from "./SearchRender";
 import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll";
 import Loading from "../../../components/Loading";
+import { useInfiniteData } from "../../../hooks/useInfiniteData";
 
 function SearchResults() {
   const { getQueryParam } = useQueryParams();
@@ -22,24 +22,13 @@ function SearchResults() {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey: ["search", term, type, year, season, format, currentStatus],
-    queryFn: ({ pageParam = 1 }) =>
-      getSearchResults({
-        pageParam,
-        term,
-        type,
-        year,
-        season,
-        format,
-        currentStatus,
-      }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      const pageInfo = lastPage.pageInfo;
-      return pageInfo.hasNextPage ? pageInfo.currentPage + 1 : undefined;
-    },
-    staleTime: 60 * 1000 * 60,
+  } = useInfiniteData("search", getSearchResults, {
+    term,
+    type,
+    year,
+    season,
+    format,
+    currentStatus,
   });
 
   const ref = useInfiniteScroll(hasNextPage, fetchNextPage);

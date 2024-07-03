@@ -20,27 +20,6 @@ function Characters({ data }: CharactersProps) {
           />
         </div>
       );
-      // <div key={character.id} className="flex flex-wrap xs:w-full text-sm">
-      //   <div className="flex flex-1">
-      //     <img
-      //       className="w-[80px] h-[120px"
-      //       src={character.node.image.large}
-      //     />
-      //     <div>
-      //       <p>{character.node.name.userPreferred}</p>
-      //       <p>{character.role}</p>
-      //     </div>
-      //   </div>
-      //   <div className="flex flex-row-reverse">
-      //     <img
-      //       className="w-[80px] h-[120px"
-      //       src={character.voiceActors[0].image.large}
-      //     />
-      //     <p className="self-end">
-      //       {character.voiceActors[0].name.userPreferred}
-      //     </p>
-      //   </div>
-      // </div>
     }
   );
   console.log(data);

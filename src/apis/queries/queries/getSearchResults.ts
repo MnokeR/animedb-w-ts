@@ -2,7 +2,6 @@ import axios from "axios";
 import { AnimeSearch } from "../types/animeSearch";
 
 interface SearchParams {
-  pageParam: number;
   term?: string;
   type?: string;
   year?: string;
@@ -11,15 +10,11 @@ interface SearchParams {
   currentStatus?: string;
 }
 
-export const getSearchResults = async ({
-  pageParam,
-  term,
-  type,
-  year,
-  season,
-  format,
-  currentStatus,
-}: SearchParams): Promise<AnimeSearch> => {
+export const getSearchResults = async (
+  pageParam: number,
+  { term, type, year, season, format, currentStatus }: SearchParams
+): Promise<AnimeSearch> => {
+  console.log(term);
   const base_URL = "https://graphql.anilist.co";
 
   const query = `

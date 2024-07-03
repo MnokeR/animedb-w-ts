@@ -4,13 +4,14 @@ export interface SearchPages {
 
 export interface AnimeSearch {
   media: Anime[];
-  pageInfo: {
-    currentPage: number;
-    hasNextPage: number;
-    lastPage: number;
-    perPage: number;
-    total: number;
-  };
+  pageInfo: PageInfo;
+}
+export interface PageInfo {
+  currentPage: number;
+  hasNextPage: number;
+  lastPage: number;
+  perPage: number;
+  total: number;
 }
 
 interface Anime {

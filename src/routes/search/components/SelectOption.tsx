@@ -36,7 +36,7 @@ function SelectOption({
       name={name}
       onChange={handleChange}
       defaultValue={getQueryParam(name) || defaultValue}
-      className={`p-1 h-8 bg-slate-200 dark:bg-slate-800 border-none outline-none ${className}`}
+      className={`p-1 h-8 bg-slate-200 dark:bg-slate-800 border-none outline-none scrollbar ${className}`}
     >
       <option value="">{name}</option>
       {renderOptions}

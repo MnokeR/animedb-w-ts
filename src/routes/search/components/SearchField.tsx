@@ -61,8 +61,8 @@ function SearchField() {
             <SelectOption
               name="Status"
               options={[
-                { label: "Releasing", value: "RELEASING" },
-                { label: "Finished", value: "FINSIHED" },
+                { label: "Airing", value: "RELEASING" },
+                { label: "Finished", value: "FINISHED" },
                 { label: "Coming Soon", value: "NOT_YET_RELEASED" },
               ]}
             />

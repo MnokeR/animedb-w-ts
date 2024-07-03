@@ -11,6 +11,7 @@ function HomeAnimeList({ categories }: { categories: Categories[] }) {
     queryKey: ["anime"],
     queryFn: async () => await getHomeAnime(),
     staleTime: 60 * 1000 * 60,
+    refetchOnMount: false,
   });
 
   if (status === "pending") return <Loading />;
