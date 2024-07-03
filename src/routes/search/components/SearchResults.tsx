@@ -30,10 +30,16 @@ function SearchResults() {
     },
     staleTime: 60 * 1000 * 60,
   });
+
   if (status === "pending") return "Loading";
   if (status === "error") return `Error: ${error.message}`;
 
-  return <SearchRender data={data} />;
+  return (
+    <div>
+      {term ? <p className="text-center m-2 italic">"{term}"</p> : ""}
+      <SearchRender data={data} />
+    </div>
+  );
 }
 
 export default SearchResults;

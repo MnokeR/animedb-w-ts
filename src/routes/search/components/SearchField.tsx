@@ -1,5 +1,6 @@
 import SelectOption from "./SelectOption";
 import { useQueryParams } from "../../../hooks/useQueryParams";
+import { yearsFromTo } from "../../../utils/yearsFromTo";
 
 function SearchField() {
   const { setQueryParam, deleteQueryParam } = useQueryParams();
@@ -30,18 +31,40 @@ function SearchField() {
               placeholder="Search"
               onChange={handleChange}
             />
-            <SelectOption name="Type" options={["Anime", "Manga"]} />
+            <SelectOption
+              name="Type"
+              options={[
+                { label: "Anime", value: "ANIME" },
+                { label: "Manga", value: "MANGA" },
+              ]}
+            />
           </div>
           <div className="flex p-1">
-            <SelectOption name="Year" options={[2024, 2023, 2022]} />
+            <SelectOption name="Year" options={yearsFromTo(1940)} />
             <SelectOption
               name="Season"
-              options={["Winter", "Spring", "Summer", "Fall"]}
+              options={[
+                { label: "Winter", value: "WINTER" },
+                { label: "Spring", value: "SPRING" },
+                { label: "Summer", value: "SUMMER" },
+                { label: "Fall", value: "FALL" },
+              ]}
             />
-            <SelectOption name="Format" options={["TV", "Movie", "OVA"]} />
+            <SelectOption
+              name="Format"
+              options={[
+                { label: "TV", value: "TV" },
+                { label: "Movie", value: "MOVIE" },
+                { label: "OVA", value: "OVA" },
+              ]}
+            />
             <SelectOption
               name="Status"
-              options={["Ongoing", "Complete", "Not Released", "Canceled"]}
+              options={[
+                { label: "Releasing", value: "RELEASING" },
+                { label: "Finished", value: "FINSIHED" },
+                { label: "Coming Soon", value: "NOT_YET_RELEASED" },
+              ]}
             />
           </div>
         </fieldset>

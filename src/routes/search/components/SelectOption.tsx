@@ -2,9 +2,13 @@ import { useQueryParams } from "../../../hooks/useQueryParams";
 
 interface SelectOptionProps {
   name: string;
-  options: string[] | number[];
+  options: SelectOptions[];
   className?: string;
   defaultValue?: string;
+}
+interface SelectOptions {
+  label?: string;
+  value?: string | number;
 }
 
 function SelectOption({
@@ -17,8 +21,8 @@ function SelectOption({
 
   const renderOptions = options.map((option) => {
     return (
-      <option key={option} value={option}>
-        {option}
+      <option key={option.value} value={option.value}>
+        {option?.label || option.value}
       </option>
     );
   });

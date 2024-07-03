@@ -20,6 +20,7 @@ export const getSearchResults = async ({
   format,
   currentStatus,
 }: SearchParams): Promise<AnimeSearch> => {
+  console.log(term);
   const base_URL = "https://graphql.anilist.co";
 
   const query = `
@@ -91,13 +92,13 @@ export const getSearchResults = async ({
   `;
   const variables = {
     page: pageParam,
-    term,
-    type: !type ? "ANIME" : type.toUpperCase(),
+    search: term,
+    type: !type ? "ANIME" : type,
     sort: ["TRENDING_DESC", "POPULARITY_DESC"],
-    year,
-    season: season?.toUpperCase(),
-    format: format?.toUpperCase(),
-    status: currentStatus?.toUpperCase(),
+    seasonYear: year,
+    season: season,
+    format,
+    status: currentStatus,
   };
 
   const options = {
