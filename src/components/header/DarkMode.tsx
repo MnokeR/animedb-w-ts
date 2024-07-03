@@ -22,8 +22,8 @@ function DarkMode() {
   };
 
   return (
-    <div className="flex-none" onClick={toggleTheme}>
-      Mode
+    <div className="flex-none cursor-pointer" onClick={toggleTheme}>
+      {theme === "dark" ? "Dark" : "Light"}
     </div>
   );
 }

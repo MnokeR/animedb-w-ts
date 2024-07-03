@@ -37,7 +37,7 @@ function SearchResults() {
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const pageInfo = lastPage.pageInfo;
-      return pageInfo.hasNextPage ? pageInfo.currentPage : undefined;
+      return pageInfo.hasNextPage ? pageInfo.currentPage + 1 : undefined;
     },
     staleTime: 60 * 1000 * 60,
   });
@@ -46,6 +46,7 @@ function SearchResults() {
 
   if (status === "pending") return <Loading />;
   if (status === "error") return `Error: ${error.message}`;
+  console.log(data);
 
   return (
     <div>
