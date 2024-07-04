@@ -7,6 +7,7 @@ import AnimePage from "./routes/anime/AnimePage";
 import SearchPage from "./routes/search/SearchPage";
 import SearchResults from "./routes/search/components/SearchResults";
 import RankingsPage from "./routes/rankings/RankingsPage";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -66,6 +67,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

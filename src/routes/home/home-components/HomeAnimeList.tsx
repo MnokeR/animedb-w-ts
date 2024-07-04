@@ -34,9 +34,11 @@ function HomeAnimeList({ categories }: { categories: Categories[] }) {
       <Fragment key={category.name}>
         <div className="relative flex justify-center w-full">
           <Heading heading={category.title} />
-          <div className="absolute right-16 top-2">
-            {category.path && <Link to={category.path}>View All</Link>}
-          </div>
+          {category.path && (
+            <div className="absolute right-16 top-2 text-sm ease-in-out transition duration-150 hover:text-red-500">
+              <Link to={category.path}>View All</Link>
+            </div>
+          )}
         </div>
         {animes}
       </Fragment>
