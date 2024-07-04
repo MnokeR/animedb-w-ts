@@ -6,6 +6,7 @@ import HomePage from "./routes/home/HomePage";
 import AnimePage from "./routes/anime/AnimePage";
 import SearchPage from "./routes/search/SearchPage";
 import SearchResults from "./routes/search/components/SearchResults";
+import RankingsPage from "./routes/rankings/RankingsPage";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -35,6 +36,21 @@ const router = createBrowserRouter([
                   {
                     index: true,
                     element: <SearchResults />,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            path: "rankings/",
+            element: <RankingsPage />,
+            children: [
+              {
+                errorElement: <ErrorBoundary />,
+                children: [
+                  {
+                    path: ":rankings",
+                    element: <RankingsPage />,
                   },
                 ],
               },

@@ -21,8 +21,8 @@ function DisplayCard({ id, title, image }: DisplayCardProps) {
           />
         </NavLink>
       </div>
-      <div className="">
-        <p className="line-clamp-2 overflow-hidden">{title}</p>
+      <div>
+        <p className="text-sm line-clamp-2 overflow-hidden">{title}</p>
       </div>
     </div>
   );

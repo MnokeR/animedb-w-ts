@@ -1,5 +1,6 @@
 import axios from "axios";
 import { seasonOfYear } from "../../../utils/seasonOfYear";
+import { PageInfo } from "../types/animeSearch";
 
 interface Anime {
   id: number;
@@ -19,12 +20,13 @@ interface AnimeData {
   trending: AnimeCategory;
 }
 
-export const getHomeAnime = async (): Promise<AnimeData> => {
+export const getAnimes = async (): Promise<AnimeData> => {
   const { currentSeason, nextSeason, currentYear, nextYear } = seasonOfYear();
 
   const base_URL = "https://graphql.anilist.co";
   const query = `
-    query ($season: MediaSeason, $seasonYear: Int, $nextSeason: MediaSeason, $nextYear: Int) {
+    query ($season: MediaSeason, $seasonYear: Int, 
+    $nextSeason: MediaSeason, $nextYear: Int) {
       trending: Page(page: 1, perPage: 6) {
         media(sort: TRENDING_DESC, type: ANIME, isAdult: false) {
           ...media

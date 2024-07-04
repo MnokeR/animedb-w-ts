@@ -13,6 +13,7 @@ function Navbar() {
   const links: Links[] = [
     { label: "HOME", path: "/" },
     { label: "SEARCH", path: "search" },
+    { label: "RANKINGS", path: "rankings" },
   ];
 
   const renderLinks = links.map((link) => {

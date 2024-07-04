@@ -8,13 +8,21 @@ interface SearchParams {
   season?: string;
   format?: string;
   currentStatus?: string;
+  sort?: string | string[];
 }
 
 export const getSearchResults = async (
   pageParam: number,
-  { term, type, year, season, format, currentStatus }: SearchParams
+  {
+    term,
+    type,
+    year,
+    season,
+    format,
+    currentStatus,
+    sort = ["TRENDING_DESC", "POPULARITY_DESC"],
+  }: SearchParams
 ): Promise<AnimeSearch> => {
-  console.log(term);
   const base_URL = "https://graphql.anilist.co";
 
   const query = `
@@ -88,7 +96,7 @@ export const getSearchResults = async (
     page: pageParam,
     search: term,
     type: !type ? "ANIME" : type,
-    sort: !term ? ["TRENDING_DESC", "POPULARITY_DESC"] : "SEARCH_MATCH",
+    sort: term ? "SEARCH_MATCH" : sort,
     seasonYear: year,
     season: season,
     format,
