@@ -14,7 +14,7 @@ function AnimePage() {
 
   const { data, status, error } = useQuery({
     queryKey: ["animeDetails", animeId, animeType],
-    queryFn: () => getAnimeDetails(id, type),
+    queryFn: () => getAnimeDetails(id, animeType),
     staleTime: 60 * 1000 * 60,
   });
 
