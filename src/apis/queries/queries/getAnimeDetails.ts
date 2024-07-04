@@ -3,11 +3,7 @@ import { AnimeDetails } from "../types/animeDetails";
 
 export const getAnimeDetails = async (
   id: number,
-<<<<<<< HEAD
   type: string
-=======
-  type: string,
->>>>>>> 6a087e9bc433105cf6ac4b96b4a2a4050ca554a1
 ): Promise<AnimeDetails> => {
   const base_URL = "https://graphql.anilist.co";
   const query = `query media($id: Int, $type: MediaType, $isAdult: Boolean) {
