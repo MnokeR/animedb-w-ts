@@ -7,12 +7,13 @@ import MainBody from "./anime-components/MainBody";
 import Loading from "../../components/Loading";
 
 function AnimePage() {
-  const { type = "defaultType", animeId = "defaultType" } = useParams();
+  const { type, animeId } = useParams();
 
+  const animeType = String(type);
   const id = Number(animeId);
 
   const { data, status, error } = useQuery({
-    queryKey: ["animeDetails", animeId, type],
+    queryKey: ["animeDetails", animeId, animeType],
     queryFn: () => getAnimeDetails(id, type),
     staleTime: 60 * 1000 * 60,
   });
