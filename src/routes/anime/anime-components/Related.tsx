@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { AnimeDetails } from "../../../apis/queries/types/animeDetails";
 import CharacterCard from "../../../components/cards/CharacterCard";
 import Heading from "../../../components/Heading";

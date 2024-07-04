@@ -1,6 +1,5 @@
 import axios from "axios";
 import { seasonOfYear } from "../../../utils/seasonOfYear";
-import { PageInfo } from "../types/animeSearch";
 
 interface Anime {
   id: number;
