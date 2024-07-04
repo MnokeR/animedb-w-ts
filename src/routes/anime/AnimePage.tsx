@@ -7,7 +7,7 @@ import MainBody from "./anime-components/MainBody";
 import Loading from "../../components/Loading";
 
 function AnimePage() {
-  const { type, animeId } = useParams();
+  const { type = "defaultType", animeId = "defaultType" } = useParams();
 
   const id = Number(animeId);
 
