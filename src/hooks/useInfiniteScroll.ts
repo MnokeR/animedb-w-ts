@@ -11,6 +11,6 @@ export const useInfiniteScroll = (
     if (inView && hasNextPage) {
       fetchNextPage();
     }
-  }, [inView, hasNextPage]);
+  }, [inView, hasNextPage, fetchNextPage]);
   return ref;
 };

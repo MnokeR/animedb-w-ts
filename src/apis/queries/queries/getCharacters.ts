@@ -1,11 +1,17 @@
-import axios from "axios";
 import { AnimeCharacters } from "../types/animeCharacters";
+import { useAxios } from "../../../hooks/useAxios";
+import { RespData } from "../types/animeDetails";
+
+interface Media {
+  Media: {
+    characters: AnimeCharacters;
+  };
+}
 
 export const getCharacters = async (
   page: number,
   id: string | undefined
 ): Promise<AnimeCharacters> => {
-  const base_URL = "https://graphql.anilist.co";
   const query = `
     query media($id: Int, $page: Int) {
       Media(id: $id) {
@@ -56,24 +62,27 @@ export const getCharacters = async (
     id: id,
   };
 
-  const options = {
-    method: "post",
-    url: base_URL,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    data: {
-      query: query,
-      variables: variables,
-    },
-  };
+  // const options = {
+  //   method: "post",
+  //   url: base_URL,
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json",
+  //   },
+  //   data: {
+  //     query: query,
+  //     variables: variables,
+  //   },
+  // };
 
-  try {
-    const resp = await axios(options);
-    console.log(resp.data.data.Media.characters);
-    return resp.data.data.Media.characters as AnimeCharacters;
-  } catch (error) {
-    throw error;
-  }
+  // try {
+  //   const resp = await axios(options);
+  //   console.log(resp.data.data.Media.characters);
+  //   return resp.data.data.Media.characters as AnimeCharacters;
+  // } catch (error) {
+  //   throw error;
+  // }
+
+  const resp = (await useAxios(query, variables)) as RespData<Media>;
+  return resp.data.data.Media.characters;
 };

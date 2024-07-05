@@ -1,5 +1,6 @@
-import axios from "axios";
 import { seasonOfYear } from "../../../utils/seasonOfYear";
+import { useAxios } from "../../../hooks/useAxios";
+import { RespData } from "../types/animeDetails";
 
 interface Anime {
   id: number;
@@ -22,7 +23,6 @@ interface AnimeData {
 export const getAnimes = async (): Promise<AnimeData> => {
   const { currentSeason, nextSeason, currentYear, nextYear } = seasonOfYear();
 
-  const base_URL = "https://graphql.anilist.co";
   const query = `
     query ($season: MediaSeason, $seasonYear: Int, 
     $nextSeason: MediaSeason, $nextYear: Int) {
@@ -114,23 +114,7 @@ export const getAnimes = async (): Promise<AnimeData> => {
     nextSeason: nextSeason.toUpperCase(),
     nextYear: nextYear,
   };
-  const options = {
-    method: "post",
-    url: base_URL,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    data: {
-      query: query,
-      variables: variables,
-    },
-  };
 
-  try {
-    const resp = await axios(options);
-    return resp.data.data as AnimeData;
-  } catch (error) {
-    throw error;
-  }
+  const resp = (await useAxios(query, variables)) as RespData<AnimeData>;
+  return resp.data.data;
 };

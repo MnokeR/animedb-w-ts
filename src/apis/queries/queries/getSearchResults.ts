@@ -1,5 +1,10 @@
-import axios from "axios";
 import { AnimeSearch } from "../types/animeSearch";
+import { useAxios } from "../../../hooks/useAxios";
+import { RespData } from "../types/animeDetails";
+
+interface Page {
+  Page: AnimeSearch;
+}
 
 interface SearchParams {
   term?: string;
@@ -23,8 +28,6 @@ export const getSearchResults = async (
     sort = ["TRENDING_DESC", "POPULARITY_DESC"],
   }: SearchParams
 ): Promise<AnimeSearch> => {
-  const base_URL = "https://graphql.anilist.co";
-
   const query = `
     query ($page: Int = 1, $id: Int, $type: MediaType, $isAdult: Boolean = false, $search: String, $format: [MediaFormat], $status: MediaStatus, $countryOfOrigin: CountryCode, $source: MediaSource, $season: MediaSeason, $seasonYear: Int, $year: String, $onList: Boolean, $yearLesser: FuzzyDateInt, $yearGreater: FuzzyDateInt, $episodeLesser: Int, $episodeGreater: Int, $durationLesser: Int, $durationGreater: Int, $chapterLesser: Int, $chapterGreater: Int, $volumeLesser: Int, $volumeGreater: Int, $licensedBy: [Int], $isLicensed: Boolean, $genres: [String], $excludedGenres: [String], $tags: [String], $excludedTags: [String], $minimumTagRank: Int, $sort: [MediaSort] = [POPULARITY_DESC, SCORE_DESC]) {
       Page(page: $page, perPage: 24) {
@@ -103,24 +106,6 @@ export const getSearchResults = async (
     status: currentStatus,
   };
 
-  const options = {
-    method: "post",
-    url: base_URL,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    data: {
-      query,
-      variables,
-    },
-  };
-
-  try {
-    const resp = await axios(options);
-    return resp.data.data.Page as AnimeSearch;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
+  const resp = (await useAxios(query, variables)) as RespData<Page>;
+  return resp.data.data.Page;
 };

@@ -1,5 +1,11 @@
 import { AnimeCharacters } from "./animeCharacters";
 
+export interface RespData<T> {
+  data: {
+    data: T;
+  };
+}
+
 export interface AnimeDetails {
   Media: {
     id: number;

@@ -3,20 +3,21 @@ interface Seasons {
   months: number[];
 }
 
-export const seasonOfYear = () => {
-  const date = new Date();
-  const month = date.getMonth();
-  const year = date.getFullYear();
-  const seasons: Seasons[] = [
-    { label: "Winter", months: [1, 2, 3] },
-    { label: "Spring", months: [4, 5, 6] },
-    { label: "Summer", months: [7, 8, 9] },
-    { label: "Fall", months: [10, 11, 12] },
-  ];
+const date = new Date();
+const month = date.getMonth();
+const year = date.getFullYear();
+const seasons: Seasons[] = [
+  { label: "Winter", months: [1, 2, 3] },
+  { label: "Spring", months: [4, 5, 6] },
+  { label: "Summer", months: [7, 8, 9] },
+  { label: "Fall", months: [10, 11, 12] },
+];
+const currentYear = year;
 
+export const seasonOfYear = () => {
   let currentSeason = "";
   let nextSeason = "";
-  const currentYear = year;
+
   let nextYear = year;
 
   seasons.forEach((season) => {

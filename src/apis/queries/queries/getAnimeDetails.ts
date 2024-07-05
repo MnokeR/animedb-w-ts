@@ -1,11 +1,10 @@
-import axios from "axios";
-import { AnimeDetails } from "../types/animeDetails";
+import { RespData, AnimeDetails } from "../types/animeDetails";
+import { useAxios } from "../../../hooks/useAxios";
 
 export const getAnimeDetails = async (
   id: number,
   type: string
 ): Promise<AnimeDetails> => {
-  const base_URL = "https://graphql.anilist.co";
   const query = `query media($id: Int, $type: MediaType, $isAdult: Boolean) {
       Media(id: $id, type: $type, isAdult: $isAdult) {
         id
@@ -188,25 +187,7 @@ export const getAnimeDetails = async (
     type: type.toUpperCase(),
     isAdult: false,
   };
-  const options = {
-    method: "post",
-    url: base_URL,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    data: {
-      query,
-      variables,
-    },
-  };
 
-  try {
-    const resp = await axios(options);
-    console.log(resp.data.data);
-    return resp.data.data as AnimeDetails;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
+  const resp = (await useAxios(query, variables)) as RespData<AnimeDetails>;
+  return resp.data.data;
 };
