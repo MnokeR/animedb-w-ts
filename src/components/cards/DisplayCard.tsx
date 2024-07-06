@@ -12,7 +12,7 @@ function DisplayCard({ id, title, image, type }: DisplayCardProps) {
     <div className="relative flex flex-col">
       <div className="p-2 bg-slate-200 dark:bg-slate-800 rounded">
         <NavLink
-          to={`/${type?.toLowerCase()}/${id}`}
+          to={`/${type?.toLowerCase() || 'anime'}/${id}`}
           className="bg-slate-200 dark:bg-slate-800 "
         >
           <img
