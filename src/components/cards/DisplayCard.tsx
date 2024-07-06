@@ -4,7 +4,7 @@ interface DisplayCardProps {
   id: number;
   title: string;
   image: string;
-  type: string;
+  type?: string;
 }
 
 function DisplayCard({ id, title, image, type }: DisplayCardProps) {

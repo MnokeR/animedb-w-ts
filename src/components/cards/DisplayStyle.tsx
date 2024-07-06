@@ -5,7 +5,7 @@ interface DisplayStyleProps {
   id: number;
   image: string;
   title: string;
-  type: string;
+  type?: string;
 }
 
 function DisplayStyle({ style, id, image, title, type }: DisplayStyleProps) {
