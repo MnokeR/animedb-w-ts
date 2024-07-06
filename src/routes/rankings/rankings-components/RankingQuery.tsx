@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 
 function RankingQuery() {
   const location = useLocation();
-  console.log(location.pathname.includes("top"));
+
   let sort;
   if (location.pathname.includes("top")) sort = "SCORE_DESC";
   if (location.pathname.includes("trending")) sort = "TRENDING_DESC";

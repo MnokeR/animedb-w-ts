@@ -1,21 +1,18 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { PageInfo } from "../apis/queries/types/animeSearch";
-interface SearchParams {
-  perPage?: number;
-  id?: number;
-  term?: string;
-  type?: string;
-  year?: string;
-  season?: string;
-  format?: string;
-  currentStatus?: string;
-  sort?: string;
-}
-type GetApiFunction = (pageParam: number, params: SearchParams) => Promise<any>;
 
-export const useInfiniteData = (
+interface SearchParams {
+  [key: string]: string | number | undefined;
+}
+
+type ApiResponse<T> = {
+  media: T;
+  pageInfo: PageInfo;
+};
+
+export const useInfiniteData = <T>(
   qKey: string,
-  getApi: GetApiFunction,
+  getApi: (pageParam: number, params: SearchParams) => Promise<ApiResponse<T>>,
   params: SearchParams
 ) => {
   return useInfiniteQuery({
@@ -23,7 +20,7 @@ export const useInfiniteData = (
     queryFn: ({ pageParam = 1 }) => getApi(pageParam, params),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      const pageInfo = lastPage.pageInfo as PageInfo;
+      const pageInfo = lastPage.pageInfo;
       return pageInfo.hasNextPage ? pageInfo.currentPage + 1 : undefined;
     },
     refetchOnMount: false,

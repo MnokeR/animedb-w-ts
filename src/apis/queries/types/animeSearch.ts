@@ -6,6 +6,7 @@ export interface AnimeSearch {
   media: Anime[];
   pageInfo: PageInfo;
 }
+
 export interface PageInfo {
   currentPage: number;
   hasNextPage: number;
@@ -14,7 +15,7 @@ export interface PageInfo {
   total: number;
 }
 
-interface Anime {
+export interface Anime {
   id: number;
   title: {
     userPreferred: string;

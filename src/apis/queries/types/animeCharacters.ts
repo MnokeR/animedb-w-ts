@@ -1,12 +1,8 @@
+import { PageInfo } from "./animeSearch";
+
 export interface AnimeCharacters {
   edges: AnimeCharacter[];
-  pageInfo: {
-    currentPage: number;
-    hasNextPage: number;
-    lastPage: number;
-    perPage: number;
-    total: number;
-  };
+  pageInfo: PageInfo;
 }
 
 interface AnimeCharacter {

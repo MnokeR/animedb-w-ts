@@ -35,7 +35,6 @@ function SearchResults() {
 
   if (status === "pending") return <Loading />;
   if (status === "error") return `Error: ${error.message}`;
-  console.log(data);
 
   return (
     <div>

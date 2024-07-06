@@ -9,6 +9,7 @@ function RankingList({ data }: RankingListProps) {
     return page.media.map((anime) => {
       return (
         <DisplayStyle
+          key={anime.id}
           style="rows"
           id={anime.id}
           title={anime.title.userPreferred}
