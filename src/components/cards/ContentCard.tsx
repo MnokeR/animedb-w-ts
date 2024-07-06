@@ -7,7 +7,7 @@ interface Props extends WrapperProps {
 function ContentCard({ children, className }: Props) {
   return (
     <div
-      className={`bg-slate-200 dark:bg-slate-800 rounded-lg p-2 ${className}`}
+      className={`bg-slate-200/80 dark:bg-slate-800/80 rounded-lg p-2 ${className}`}
     >
       {children}
     </div>

@@ -4,7 +4,8 @@ interface Seasons {
 }
 
 const date = new Date();
-const month = date.getMonth();
+const monthIndex = date.getMonth();
+const month = monthIndex + 1;
 const year = date.getFullYear();
 const seasons: Seasons[] = [
   { label: "Winter", months: [1, 2, 3] },

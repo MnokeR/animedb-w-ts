@@ -13,6 +13,7 @@ function SearchRender({ data }: SearchRenderProps) {
           id={anime.id}
           image={anime.coverImage.large}
           title={anime.title.userPreferred}
+          type={anime.type}
         />
       );
     });

@@ -5,6 +5,7 @@ import ContentWrapper from "../../components/ContentWrapper";
 import SideBar from "./anime-components/SideBar";
 import MainBody from "./anime-components/MainBody";
 import Loading from "../../components/Loading";
+import Banner from "./anime-components/Banner";
 
 function AnimePage() {
   const { type, animeId } = useParams();
@@ -20,12 +21,16 @@ function AnimePage() {
 
   if (status === "pending") return <Loading />;
   if (status === "error") return `Error: ${error.message}`;
+  console.log(data);
 
   return (
-    <ContentWrapper className="flex flex-row flex-wrap xs:flex-nowrap gap-2">
-      <SideBar data={data} />
-      <MainBody data={data} />
-    </ContentWrapper>
+    <>
+      <Banner data={data} />
+      <ContentWrapper className="flex flex-row flex-wrap xs:flex-nowrap gap-2">
+        <SideBar data={data} />
+        <MainBody data={data} />
+      </ContentWrapper>
+    </>
   );
 }
 

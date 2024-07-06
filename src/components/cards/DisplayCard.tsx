@@ -4,14 +4,15 @@ interface DisplayCardProps {
   id: number;
   title: string;
   image: string;
+  type: string;
 }
 
-function DisplayCard({ id, title, image }: DisplayCardProps) {
+function DisplayCard({ id, title, image, type }: DisplayCardProps) {
   return (
     <div className="relative flex flex-col">
       <div className="p-2 bg-slate-200 dark:bg-slate-800 rounded">
         <NavLink
-          to={`/anime/${id}`}
+          to={`/${type?.toLowerCase()}/${id}`}
           className="bg-slate-200 dark:bg-slate-800 "
         >
           <img

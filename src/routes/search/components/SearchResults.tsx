@@ -14,6 +14,7 @@ function SearchResults() {
   const season = getQueryParam("Season");
   const format = getQueryParam("Format");
   const currentStatus = getQueryParam("Status");
+  const sort = getQueryParam("Sort");
 
   const {
     data,
@@ -29,6 +30,7 @@ function SearchResults() {
     season,
     format,
     currentStatus,
+    sort,
   });
 
   const ref = useInfiniteScroll(hasNextPage, fetchNextPage);

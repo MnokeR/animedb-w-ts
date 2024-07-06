@@ -24,4 +24,5 @@ export interface Anime {
     large: string;
     extraLarge: string;
   };
+  type: string;
 }
