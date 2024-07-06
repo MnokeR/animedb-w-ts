@@ -1,5 +1,5 @@
 import { AnimeCharacters } from "../types/animeCharacters";
-import { useAxios } from "../../../hooks/useAxios";
+import { axiosRequest } from "../../../utils/axiosRequest";
 import { RespData } from "../types/animeDetails";
 
 interface Media {
@@ -83,6 +83,6 @@ export const getCharacters = async (
   //   throw error;
   // }
 
-  const resp = (await useAxios(query, variables)) as RespData<Media>;
+  const resp = (await axiosRequest(query, variables)) as RespData<Media>;
   return resp.data.data.Media.characters;
 };

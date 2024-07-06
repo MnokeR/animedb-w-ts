@@ -6,7 +6,7 @@ interface Years {
 }
 
 export const yearsFromTo = (to: number) => {
-  let years: Years[] = [];
+  const years: Years[] = [];
 
   if (currentYear > to) {
     for (let i = currentYear; i >= to; i--) {

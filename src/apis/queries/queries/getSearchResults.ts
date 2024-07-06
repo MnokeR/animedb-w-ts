@@ -1,5 +1,5 @@
 import { AnimeSearch } from "../types/animeSearch";
-import { useAxios } from "../../../hooks/useAxios";
+import { axiosRequest } from "../../../utils/axiosRequest";
 import { RespData } from "../types/animeDetails";
 
 interface Page {
@@ -106,6 +106,6 @@ export const getSearchResults = async (
     status: currentStatus,
   };
 
-  const resp = (await useAxios(query, variables)) as RespData<Page>;
+  const resp = (await axiosRequest(query, variables)) as RespData<Page>;
   return resp.data.data.Page;
 };

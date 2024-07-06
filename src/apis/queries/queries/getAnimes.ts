@@ -1,5 +1,5 @@
 import { seasonOfYear } from "../../../utils/seasonOfYear";
-import { useAxios } from "../../../hooks/useAxios";
+import { axiosRequest } from "../../../utils/axiosRequest";
 import { RespData } from "../types/animeDetails";
 
 interface Anime {
@@ -115,6 +115,6 @@ export const getAnimes = async (): Promise<AnimeData> => {
     nextYear: nextYear,
   };
 
-  const resp = (await useAxios(query, variables)) as RespData<AnimeData>;
+  const resp = (await axiosRequest(query, variables)) as RespData<AnimeData>;
   return resp.data.data;
 };

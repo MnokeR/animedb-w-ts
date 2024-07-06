@@ -1,5 +1,5 @@
 import { RespData, AnimeDetails } from "../types/animeDetails";
-import { useAxios } from "../../../hooks/useAxios";
+import { axiosRequest } from "../../../utils/axiosRequest";
 
 export const getAnimeDetails = async (
   id: number,
@@ -188,6 +188,6 @@ export const getAnimeDetails = async (
     isAdult: false,
   };
 
-  const resp = (await useAxios(query, variables)) as RespData<AnimeDetails>;
+  const resp = (await axiosRequest(query, variables)) as RespData<AnimeDetails>;
   return resp.data.data;
 };

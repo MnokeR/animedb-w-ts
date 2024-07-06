@@ -2,7 +2,7 @@ import axios from "axios";
 
 const base_URL = "https://graphql.anilist.co";
 
-export const useAxios = async <T, D>(
+export const axiosRequest = async <T, D>(
   query: string,
   variables: T
 ): Promise<D> => {
@@ -23,6 +23,7 @@ export const useAxios = async <T, D>(
     const resp: D = await axios(options);
     return resp;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
